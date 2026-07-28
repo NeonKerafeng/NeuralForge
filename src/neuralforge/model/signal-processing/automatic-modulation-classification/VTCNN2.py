@@ -27,14 +27,13 @@ class VTCNN2(torch.nn.Module):
                 torch.nn.ReLU(),
                 torch.nn.Dropout(0.5)
             ),
-            
+
             # Output layer:
             torch.nn.Sequential(
-                torch.nn.LazyLinear(out_features=num_classes),
-                torch.nn.Softmax(dim=1)
+                torch.nn.LazyLinear(out_features=num_classes)
             )
         ])
-        
+
     def forward(self, x):
         for layer in self.layers:
             x = layer(x)
